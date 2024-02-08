@@ -1,16 +1,10 @@
-export const App = () => {
+import ContactsAddApp from './ContactsAddApp/ContactsAddApp';
+const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <ContactsAddApp />
+    </>
   );
 };
+
+export default App;
