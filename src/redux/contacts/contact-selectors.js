@@ -1,11 +1,22 @@
 export const selectAllContacts = store => store.contacts;
 
 export const selectFiltredContacts = store => {
-  const { contacts, filter } = store;
+  const { filter } = store;
+  const { contacts, loading, error } = store.contacts;
+
   if (!filter) {
-    return contacts;
+    return store.contacts;
   }
-  return contacts.filter(({ name }) => {
-    return name.toLocaleLowerCase().includes(filter.toLocaleLowerCase());
+  const normalizetFilter = filter.toLowerCase();
+
+  const filtredContacts = contacts.filter(({ name }) => {
+    const normalizetName = name.toLowerCase();
+    return normalizetName.includes(normalizetFilter);
   });
+
+  return {
+    contacts: filtredContacts,
+    loading,
+    error,
+  };
 };
